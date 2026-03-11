@@ -264,36 +264,39 @@ section {
     border: 8px solid rgba(255, 255, 255, 0.8);
 }
 
-/* About Section - warm mit Farbformen */
+
+/* About Section - warmer, dezenter Ton */
 .about {
-    background: linear-gradient(120deg, #fdf8f5 0%, #f0d8e5 100%);
+    background: linear-gradient(120deg, #faf3e8 0%, #f0e2d8 100%);
     position: relative;
     overflow: hidden;
 }
 
-/* Weiche Farbform - warmes Orange/Rosa */
+/* Weiche Farbform - warmes Beige/Gold */
 .about::before {
     content: "";
     position: absolute;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(255, 200, 180, 0.25) 0%, rgba(255, 200, 180, 0) 70%);
+    background: radial-gradient(circle, rgba(240, 210, 180, 0.2) 0%, rgba(240, 210, 180, 0) 70%);
     top: -200px;
     right: -150px;
     border-radius: 50%;
+    filter: blur(40px);
     z-index: 0;
 }
 
-/* Zweite Form - kühler Akzent für Kontrast */
+/* Zweite Form - sehr dezenter Blaustich für Kontrast */
 .about::after {
     content: "";
     position: absolute;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(180, 200, 240, 0.15) 0%, rgba(180, 200, 240, 0) 70%);
+    background: radial-gradient(circle, rgba(200, 210, 230, 0.1) 0%, rgba(200, 210, 230, 0) 70%);
     bottom: -150px;
     left: -100px;
     border-radius: 50%;
+    filter: blur(40px);
     z-index: 0;
 }
 
@@ -303,8 +306,9 @@ section {
     gap: 50px;
     align-items: flex-start;
     position: relative;
-    z-index: 1; /* Damit Inhalt über den Farbformen liegt */
+    z-index: 1;
 }
+
 
 .about-text p {
     margin-bottom: 1.5rem;
