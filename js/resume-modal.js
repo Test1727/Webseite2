@@ -146,45 +146,60 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 300);
     }
     
-    // VERBESSERTE Download-Funktion für Safari
+    // ULTIMATIVE Download-Funktion für Safari
     downloadBtn.addEventListener('click', function(e) {
         e.preventDefault();
         
         const pdfUrl = 'assets/pdf/Lebenslauf_AstridKraft.pdf';
         const fileName = 'Lebenslauf_AstridKraft.pdf';
         
-        // iOS-Hinweis anzeigen
+        // iOS/Safari-Hinweis anzeigen
+        iosHint.style.display = 'block';
+        
         if (isIOS || isSafari) {
-            iosHint.style.display = 'block';
+            // SAFARI: Direkter Download-Link mit Schritt-für-Schritt-Anleitung
+            iosHint.innerHTML = `
+                <div style="padding:15px; background:#f8f9fa; border-radius:8px;">
+                    <p style="margin-bottom:10px; font-weight:bold; color:#0a3d62;">📱 PDF speichern auf iOS/Safari:</p>
+                    <ol style="text-align:left; margin-bottom:15px; padding-left:20px;">
+                        <li style="margin-bottom:10px;">👉 <strong>Tippe und halte</strong> auf den Link unten</li>
+                        <li style="margin-bottom:10px;">📥 Wähle im Menü <strong>"Download verknüpfter Datei"</strong></li>
+                        <li style="margin-bottom:10px;">📁 Wähle Speicherort (z.B. "Auf meinem iPhone")</li>
+                    </ol>
+                    <a href="${pdfUrl}" 
+                       style="display:block; padding:15px 20px; background:#0a3d62; color:white; 
+                              border-radius:8px; text-decoration:none; font-weight:bold; text-align:center;
+                              border:2px solid #0a3d62;"
+                       target="_blank">
+                        📄 Lebenslauf_AstridKraft.pdf (tippen & halten)
+                    </a>
+                    <p style="margin-top:15px; font-size:0.9rem; color:#666;">
+                        Funktioniert der Download nicht? In den iOS-Einstellungen unter "Safari" → "Downloads" prüfen.
+                    </p>
+                </div>
+            `;
             
-            // SPEZIALFALL SAFARI: Andere Download-Methode
-            fetch(pdfUrl)
-                .then(response => response.blob())
-                .then(blob => {
-                    // Blob-URL erstellen (funktioniert in Safari besser)
-                    const blobUrl = window.URL.createObjectURL(blob);
-                    const link = document.createElement('a');
-                    link.href = blobUrl;
-                    link.download = fileName;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                    
-                    // Aufräumen
-                    setTimeout(() => {
-                        window.URL.revokeObjectURL(blobUrl);
-                    }, 100);
-                    
-                    // Erfolgshinweis
-                    iosHint.innerHTML = '<p>✅ Download gestartet!</p>';
-                })
-                .catch(() => {
-                    // Fallback: Im neuen Tab öffnen
-                    window.open(pdfUrl, '_blank');
-                    iosHint.innerHTML = '<p>📄 PDF im neuen Tab geöffnet.</p>';
-                });
+            // Zusätzlicher Versuch mit Blob (manchmal erfolgreich)
+            try {
+                fetch(pdfUrl)
+                    .then(response => response.blob())
+                    .then(blob => {
+                        const blobUrl = window.URL.createObjectURL(blob);
+                        const link = document.createElement('a');
+                        link.href = blobUrl;
+                        link.download = fileName;
+                        link.style.display = 'none';
+                        document.body.appendChild(link);
+                        link.click();
+                        setTimeout(() => {
+                            document.body.removeChild(link);
+                            window.URL.revokeObjectURL(blobUrl);
+                        }, 1000);
+                    })
+                    .catch(() => {});
+            } catch (e) {}
             
-            // Hinweis nach 5 Sekunden ausblenden
+            // Hinweis für 15 Sekunden anzeigen (länger wegen Anleitung)
             setTimeout(() => {
                 iosHint.style.display = 'none';
                 // Originaltext wiederherstellen
@@ -192,10 +207,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (translations && translations[currentLang]) {
                     iosHint.textContent = translations[currentLang]['resume_ios_hint'];
                 }
-            }, 5000);
+            }, 15000);
             
         } else {
             // Für Chrome, Firefox, Edge: Standard-Download
+            iosHint.innerHTML = '<p style="padding:10px;">✅ Download gestartet...</p>';
+            
             const link = document.createElement('a');
             link.href = pdfUrl;
             link.download = fileName;
@@ -203,9 +220,7 @@ document.addEventListener('DOMContentLoaded', function() {
             link.click();
             document.body.removeChild(link);
             
-            // Kurzen Hinweis anzeigen (optional)
-            iosHint.style.display = 'block';
-            iosHint.innerHTML = '<p>✅ Download gestartet!</p>';
+            // Hinweis nach 2 Sekunden ausblenden
             setTimeout(() => {
                 iosHint.style.display = 'none';
             }, 2000);
