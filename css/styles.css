@@ -1123,6 +1123,21 @@ footer p {
     padding-top: 0rem !important;
 }
 
+/*-----------------------------------*/
+/* SCROLL-AUSGLEICH FÜR FIXIERTE MENÜLEISTE */
+/*-----------------------------------*/
+
+/* Sanftes Scrollen mit Ausgleich */
+html {
+    scroll-padding-top: 100px;  /* Passt den Scroll-Zielpunkt an */
+    scroll-behavior: smooth;     /* Sanftes Scrollen bleibt erhalten */
+}
+
+/* Alternative Absicherung über :target für ältere Browser */
+:target {
+    scroll-margin-top: 100px;
+}
+
 
 
 
