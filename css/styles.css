@@ -260,35 +260,65 @@ section {
 
 
 
-
-
-/* Digitales Gehirn rechts */
+/* Digitales Gehirn rechts - mit Leiterbahnen */
 .hero::after {
     content: "";
     position: absolute;
-    right: 5%;
+    right: 2%;
     top: 50%;
     transform: translateY(-50%);
-    width: 450px;
-    height: 450px;
+    width: 500px;
+    height: 500px;
     background: 
-        /* Gehirn-Kontur */
-        radial-gradient(circle at 60% 50%, rgba(0, 255, 200, 0.2) 0%, transparent 60%),
-        /* Leiterbahnen */
-        repeating-linear-gradient(90deg, transparent 0px, transparent 20px, rgba(0, 200, 255, 0.15) 20px, rgba(0, 200, 255, 0.15) 21px),
-        repeating-linear-gradient(0deg, transparent 0px, transparent 20px, rgba(0, 200, 255, 0.15) 20px, rgba(0, 200, 255, 0.15) 21px),
-        /* Synapsen-Punkte */
-        radial-gradient(circle at 55% 40%, rgba(255, 140, 0, 0.3) 4px, transparent 4px),
-        radial-gradient(circle at 65% 55%, rgba(0, 255, 255, 0.3) 5px, transparent 5px),
-        radial-gradient(circle at 70% 30%, rgba(255, 140, 0, 0.3) 3px, transparent 3px),
-        radial-gradient(circle at 50% 60%, rgba(0, 255, 255, 0.3) 4px, transparent 4px),
-        radial-gradient(circle at 45% 75%, #ff8c00 4px, transparent 4px),
-        radial-gradient(circle at 75% 70%, #00ffff 5px, transparent 5px);
+        /* Gehirn-Grundform (zwei Hemisphären) */
+        radial-gradient(ellipse at 40% 50%, rgba(0, 255, 200, 0.2) 0%, transparent 60%),
+        radial-gradient(ellipse at 60% 50%, rgba(0, 255, 200, 0.2) 0%, transparent 60%),
+        
+        /* Leiterbahnen - vertikale Verbindungen */
+        repeating-linear-gradient(90deg, transparent 0px, transparent 15px, rgba(0, 200, 255, 0.25) 15px, rgba(0, 200, 255, 0.25) 16px),
+        repeating-linear-gradient(0deg, transparent 0px, transparent 20px, rgba(0, 200, 255, 0.2) 20px, rgba(0, 200, 255, 0.2) 21px),
+        
+        /* Leiterbahnen - diagonal (wie Synapsen) */
+        repeating-linear-gradient(45deg, transparent 0px, transparent 25px, rgba(255, 140, 0, 0.2) 25px, rgba(255, 140, 0, 0.2) 26px),
+        repeating-linear-gradient(-45deg, transparent 0px, transparent 30px, rgba(0, 255, 255, 0.15) 30px, rgba(0, 255, 255, 0.15) 31px),
+        
+        /* Synapsen-Knotenpunkte (Neuronen) */
+        radial-gradient(circle at 35% 40%, #00ffff 6px, transparent 6px),
+        radial-gradient(circle at 55% 45%, #ff8c00 5px, transparent 5px),
+        radial-gradient(circle at 45% 55%, #00ffff 7px, transparent 7px),
+        radial-gradient(circle at 65% 35%, #ff8c00 4px, transparent 4px),
+        radial-gradient(circle at 30% 60%, #00ffff 5px, transparent 5px),
+        radial-gradient(circle at 50% 70%, #ff8c00 6px, transparent 6px),
+        radial-gradient(circle at 70% 60%, #00ffff 4px, transparent 4px),
+        radial-gradient(circle at 40% 30%, #ff8c00 5px, transparent 5px),
+        radial-gradient(circle at 60% 20%, #00ffff 4px, transparent 4px),
+        
+        /* Verbindungslinien zwischen Neuronen (manuell) */
+        linear-gradient(35deg, transparent 40%, rgba(0, 255, 255, 0.2) 40%, rgba(0, 255, 255, 0.2) 42%, transparent 42%),
+        linear-gradient(120deg, transparent 55%, rgba(255, 140, 0, 0.2) 55%, rgba(255, 140, 0, 0.2) 57%, transparent 57%),
+        linear-gradient(60deg, transparent 30%, rgba(0, 255, 255, 0.15) 30%, rgba(0, 255, 255, 0.15) 32%, transparent 32%),
+        
+        /* Gehirnwindungen */
+        radial-gradient(ellipse at 30% 45%, rgba(255, 255, 255, 0.1) 10px, transparent 20px),
+        radial-gradient(ellipse at 60% 55%, rgba(255, 255, 255, 0.1) 15px, transparent 25px);
+    
     filter: blur(0.8px);
-    opacity: 0.7;
-    animation: glowPulse 4s infinite alternate 1s;
+    opacity: 0.85;
+    animation: brainPulse 6s infinite alternate;
     z-index: 0;
+    border-radius: 40% 40% 50% 50% / 50% 50% 40% 40%;
+    box-shadow: 0 0 60px rgba(0, 255, 200, 0.4);
 }
+
+/* Spezielle Animation für das Gehirn */
+@keyframes brainPulse {
+    0% { opacity: 0.7; filter: blur(1px); box-shadow: 0 0 40px rgba(0, 255, 200, 0.3); }
+    50% { opacity: 0.95; filter: blur(0.5px); box-shadow: 0 0 80px rgba(0, 255, 200, 0.6); }
+    100% { opacity: 0.7; filter: blur(1px); box-shadow: 0 0 40px rgba(0, 255, 200, 0.3); }
+}
+
+
+
 
 /* Datenlinien und Lichtpunkte */
 .hero .container::before {
