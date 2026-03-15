@@ -459,20 +459,19 @@ section {
     z-index: 3;
 }
 
-
 .hero-brain {
     position: absolute;
     left: 0;
-    top: 50%;
-    transform: translateY(-50%) rotate(-90deg);
-    width: auto;        /* oder fester Wert */
-    height: 80%;        /* Höhe auf 80% des Containers */
-    max-width: none;    /* Keine Begrenzung */
-    max-height: 600px;  /* Aber maximal 600px hoch */
-    opacity: 0.5;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* Bild füllt den Bereich aus (wie background-size: cover) */
+    opacity: 0.3;
     z-index: 0;
     pointer-events: none;
 }
+
+
 
 
 .profile-image {
