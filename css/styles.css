@@ -278,6 +278,37 @@ section {
     transition: all 0.3s ease;
 }
 
+/* Buttons nach unten verschieben */
+.hero-buttons {
+    margin-top: 40px;  /* Mehr Abstand nach oben */
+}
+
+/* Button-Farben an neue Hintergrundfarbe #112c4b anpassen */
+.btn-primary {
+    background: #1e4a7a;  /* Helles Blau für Kontrast */
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: #ff8c00;  /* Orange bei Hover */
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.5);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid #00ffff;  /* Türkiser Rahmen passend zur Überschrift */
+}
+
+.btn-secondary:hover {
+    background: #00ffff;
+    color: #112c4b;  /* Dunkelblau wie Hintergrund */
+    border-color: #00ffff;
+}
+
 .btn-primary:hover {
     background: linear-gradient(135deg, #ff8c00 0%, #ff6b00 100%);
     box-shadow: 0 0 20px rgba(255, 140, 0, 0.5);
