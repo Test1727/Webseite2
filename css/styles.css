@@ -465,12 +465,14 @@ section {
     top: 0;
     width: 100%;
     height: 100%;
-    transform: translateY(-50%) rotate(-90deg);
-    object-fit: cover;  /* Bild füllt den Bereich aus (wie background-size: cover) */
+    transform: rotate(-90deg) scale(1.2);  /* Drehen + evtl. skalieren */
+    object-fit: cover;
     opacity: 0.3;
     z-index: 0;
     pointer-events: none;
 }
+
+
 
 
 
