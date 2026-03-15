@@ -310,7 +310,7 @@ section {
 
 .hero-brain2 {
     position: absolute;
-    right: 0;
+    right: -80%;
     top: 50%;
     transform: translateY(-50%);
     width: 45%;
