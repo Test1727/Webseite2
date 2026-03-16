@@ -575,6 +575,7 @@ section {
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: 100%;
     }
 
     /* === KORRIGIERTER BEREICH FÜR SMARTFONE === */
@@ -583,9 +584,12 @@ section {
         align-items: center;
         justify-content: center;
         gap: 8px;
-        margin: 10px 0;
+        margin: 10px auto;
         height: auto;  /* Automatische Höhe */
-        width: 100%;
+        width: auto;
+        max-width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
     }
     
     /* Sprachselector und Button auf gleiche Höhe bringen */
