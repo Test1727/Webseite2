@@ -317,9 +317,10 @@ nav ul li a:hover, nav ul li a.active {
 
 /* Main Content Area */
 main {
-    padding-top: 80px; /* Adjust based on header height */
+    padding-top: 0 !important; /* Adjust based on header height */
 }
 
+/* Alle Sektionen */
 section {
     padding: 60px 0;
 }
@@ -335,6 +336,8 @@ section {
     background: #112c4b;
     position: relative;
     overflow: hidden;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
 }
 
 
